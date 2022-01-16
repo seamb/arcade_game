@@ -18,6 +18,14 @@ h2 {
 p {
   font-size: 12pt;
 }
+
+#playText {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 36pt;
+  color: azure;
+}
+
 #xPlayer,
 #oPlayer {
   height: 60px;

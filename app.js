@@ -12,16 +12,13 @@ newBoard = [null,null,null,null,null,null,null,null,null]
     // console.log('state', state );
     // state.currentPlayerIdx = 1;
 
+const playText = document.getElementById('playText')
+
 const x_Player = "X";
 const o_Player = "O";
 let currentPlayer = x_Player
 
-  
 
-
-
-// const whosTurn = `It is ${addPlayerNames ()}'s turn`
-// ourPlayers.innerHTML = whosTurn;
 // *********************************** DOM SELECTORS *********************************
 
 const boardElement = document.getElementById('board');
@@ -54,10 +51,56 @@ const squareClick = (e) => {
     if (!newBoard [identifier]) {
         newBoard [identifier] = currentPlayer;
         e.target.innerText = currentPlayer;
+
+        if(playerWins()){
+            playText.innerText = `${currentPlayer} has won!`;
+            return;
+        }
+
+
         currentPlayer = currentPlayer === x_Player ? o_Player : x_Player;
+
     }
 
 }
+const playerWins = () => {
+    if(newBoard[0]===currentPlayer){
+        if(newBoard[1] ===currentPlayer && newBoard[2] === currentPlayer){
+            playText.innerHTML = `${currentPlayer} wins!`;
+            return true;
+
+        }
+        if(newBoard[3] ===currentPlayer && newBoard[6] === currentPlayer){
+            playText.innerHTML = `${currentPlayer} wins!`;
+            return true;
+        }
+        if(newBoard[4] ===currentPlayer && newBoard[8] === currentPlayer){
+            playText.innerHTML = `${currentPlayer} wins!`;
+            return true;
+        }
+
+        } else if (newBoard[8]===currentPlayer){
+        if(newBoard[7] ===currentPlayer && newBoard[6] === currentPlayer){
+            playText.innerHTML = `${currentPlayer} wins!`;
+            return true;           
+        }
+        if(newBoard[5] ===currentPlayer && newBoard[2] === currentPlayer){
+            playText.innerHTML = `${currentPlayer} wins!`;
+            return true; 
+        }
+
+        } else if (newBoard[4]===currentPlayer){
+        if(newBoard[3] ===currentPlayer && newBoard[5] === currentPlayer){
+            playText.innerHTML = `${currentPlayer} wins!`;
+            return true; 
+        }
+        if(newBoard[1] ===currentPlayer && newBoard[7] === currentPlayer){
+            playText.innerHTML = `${currentPlayer} wins!`;
+            return true; 
+        }
+
+    }
+};
 
 //  // ***************************** EVENT LISTENERS ********************************
 
@@ -66,14 +109,14 @@ const squareClick = (e) => {
  renderBoard();
 }
 // };
-  function addPlayerNames(){
- //Selecting the input element and get its value 
-    let playerX = document.getElementById ("xPlayer").value;
-    let playerO = document.getElementById ("oPlayer").value;
-       state.players = [playerX, playerO];
-       ourPlayers.innerText = ` ${playerX} will start`
-          console.log('play game clicked')
-  }
+//   function addPlayerNames(){
+//  //Selecting the input element and get its value 
+//     let playerX = document.getElementById ("xPlayer").value;
+//     let playerO = document.getElementById ("oPlayer").value;
+//        state.players = [playerX, playerO];
+//        ourPlayers.innerText = ` ${playerX} will start`
+//           console.log('play game clicked')
+//   }
 
 // ******************************** HELPER FUNCTIONS **************************
 
