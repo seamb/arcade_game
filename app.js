@@ -4,31 +4,24 @@
 // How does each interaction update the state?
 
 //********************************* STATE *********************************************
-let state = {}; //starting the state as empty
+// let state = {}; //starting the state as empty
 
 const resetState = () => {
-
-
-    state.board = [
-        
-        {value: "null", squareMarked: false, markedBy: ""},
-        {value: "null", squareMarked: false, markedBy: ""},
-        {value: "null", squareMarked: false, markedBy: ""},
-        {value: "null", squareMarked: false, markedBy: ""},
-        {value: "null", squareMarked: false, markedBy: ""},
-        {value: "null", squareMarked: false, markedBy: ""},
-        {value: "null", squareMarked: false, markedBy: ""},
-        {value: "null", squareMarked: false, markedBy: ""},
-        {value: "null", squareMarked: false, markedBy: ""},
-];
  
-    console.log('state', state );
-    state.currentPlayerIdx = 1;
-}
- //    container where the player data is stored
- const ourPlayers = document.getElementById("playerInfo");
+newBoard = [null,null,null,null,null,null,null,null,null]
+    // console.log('state', state );
+    // state.currentPlayerIdx = 1;
+
+const x_Player = "X";
+const o_Player = "O";
+let currentPlayer = x_Player
+
+  
 
 
+
+// const whosTurn = `It is ${addPlayerNames ()}'s turn`
+// ourPlayers.innerHTML = whosTurn;
 // *********************************** DOM SELECTORS *********************************
 
 const boardElement = document.getElementById('board');
@@ -37,7 +30,7 @@ console.log('board', boardElement);
 const renderBoard = () => {
       boardElement.innerHTML = '';
     // reset the board
-    for (let i = 0; i < state.board.length; i++) {
+    for (let i = 0; i < newBoard.length; i++) {
 
 //create a square element
     const squareElement = document.createElement('div');    
@@ -45,94 +38,54 @@ const renderBoard = () => {
     squareElement.className= 'square'; 
 //attach the element to the parent container
     boardElement.appendChild(squareElement);    
-    
-    // console.log(state.board)
 
     squareElement.dataset.index = i;
-    // const squareMarked = state.board[i].squareMarked;
 
-//     if (squareMarked) {
-//            squareElement.innerText = "X"; 
-   
-//     } else if (squareMarked ) { 
-//            squareElement.innerText = "O"; 
-//     } else {
-//           squareElement.innerText = ""; 
-//     }
-// }     
+squareElement.addEventListener('click', squareClick);
 
-}}
+}
 
- //Define who is starting
-  function getPlayerName(){
+}
+
+const squareClick = (e) => {
+    const identifier = e.target.dataset.index; 
+    console.log("ASCSACSAC", identifier, "hahaha")
+    console.log( "hi",currentPlayer );
+    if (!newBoard [identifier]) {
+        newBoard [identifier] = currentPlayer;
+        e.target.innerText = currentPlayer;
+        currentPlayer = currentPlayer === x_Player ? o_Player : x_Player;
+    }
+
+}
+
+//  // ***************************** EVENT LISTENERS ********************************
+
+
+
+ renderBoard();
+}
+// };
+  function addPlayerNames(){
  //Selecting the input element and get its value 
     let playerX = document.getElementById ("xPlayer").value;
     let playerO = document.getElementById ("oPlayer").value;
        state.players = [playerX, playerO];
        ourPlayers.innerText = ` ${playerX} will start`
+          console.log('play game clicked')
   }
-
-
-let players = ["X", "O"]
-
-boardElement.addEventListener("click",function(event){
-
-    // players = [state.players [1], state.players[0]]
-
-// if (event.target.innerText=== "null"){
-//     event.target.innerText= "x";
-// }
-
-})
- // ***************************** EVENT LISTENERS ********************************
-
-boardElement.addEventListener('click', function(event){
-//an event happens when user clicks    
-
-console.log(event.target.dataset.index, "clicked");
-// const identifier = event.target.dataset.index; 
- 
- const identifier = event.target.dataset.index; 
- console.log('identifier', identifier)
-
-// if (state.currentPlayerIdx === 1) {
-//  console.log('X marked');
-//     identifier.innerText = "X"; 
-// } else if (state.currentPlayerIdx === 0){
-//     console.log('O marked')
-//     identifier.innerText = "O"; 
-// }
-
-const whosTurn = `It is ${getCurrentPlayer ()}'s turn`
-ourPlayers.innerHTML = whosTurn;
-
-
-
- renderBoard();
- changeTurn();
-
-});
 
 // ******************************** HELPER FUNCTIONS **************************
 
-const getCurrentPlayer = () => {
-    //console.log(state.players[state.currentPlayerIdx]) //will say Sean or Garrett
-    return state.players[state.currentPlayerIdx];
 
-}
-const changeTurn = () => {
-    
-  state.currentPlayerIdx = state.currentPlayerIdx === 0 ? 1 : 0
-  console.log( state.currentPlayerIdx); //0 or 1
-
-}
   
 // ******************************* BOOTSTRAPPING *******************************
 resetState();
-renderBoard();
+// renderBoard();
 
 let newGameButton = document.getElementById("newGame");
     newGameButton.addEventListener('click' , () => { // takes the assigned button and adds an event when clicked
      window.location.reload(true);   // event is that the window is reloaded 
   
     });
+
