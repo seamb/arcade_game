@@ -2,11 +2,11 @@
   box-sizing: border-box;
   background-color: rgb(209, 225, 228);
   font-family: sans-serif;
-
+  align-items: center;
   font-size: 18pt;
 }
 h1 {
-  margin-top: 30px;
+  margin: 10px;
   text-align: center;
   font-size: 36pt;
   color: azure;
@@ -14,20 +14,33 @@ h1 {
 h2 {
   text-align: center;
   color: black;
-}
-p {
-  font-size: 12pt;
+  font-size: 10pt;
+  font-weight: 200;
+  width: 50%;
+  margin: auto;
 }
 
 #playText {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   text-align: center;
-  font-size: 36pt;
+  font-size: 24pt;
+  font-weight: 900;
   color: azure;
 }
 
-#xPlayer,
-#oPlayer {
+#setup {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 20em;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1px;
+  margin-top: 5px;
+}
+
+#firstPlayer,
+#secondPlayer {
   height: 60px;
   width: 160px;
   border-top: none;
@@ -36,33 +49,29 @@ p {
   border-bottom: black solid 3px;
   font-size: 14pt;
   text-align: center;
-  /* border: none; */
   background-color: rgb(209, 225, 228);
   margin: 15px;
   padding: 15px;
 }
-#playerInfo {
+#whoPlays {
   display: flex;
-  justify-content: center;
-
-  /* font-size: 10pt;
-  display: flex;
-  align-content: space-around;
-  margin: 10px; */
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
-
-.square {
-  background-color: rgb(152, 195, 203);
-  color: white;
-  width: 90px;
-  height: 90px;
-  /* border: aliceblue solid 1px; */
-  box-shadow: 5px 5px 5px rgb(152, 195, 203);
-  border-radius: 30px;
-  margin: 5px;
-  font-size: 48pt;
-  text-align: center;
-  padding-top: 8pt;
+#xIs,
+#oIs {
+  color: rgb(152, 195, 203);
+  margin-left: 0.7rem;
+  margin-right: 0.7em;
+  margin-top: 20px;
+  font-size: 24pt;
+  font-weight: 900;
+  text-decoration-line: underline;
+}
+#playersEntry {
+  font-size: 18pt;
+  font-weight: 300;
 }
 #board {
   display: flex;
@@ -70,16 +79,30 @@ p {
   width: 300px;
   margin: auto;
 }
-#playButton,
+#playBtn,
 #newGame {
   background-color: whitesmoke;
   border: none;
   border-radius: 10px;
   height: 40px;
 }
+
 #newGame {
   margin: auto;
-  margin-top: 10px;
+  margin-top: 30px;
   display: flex;
   background-color: whitesmoke;
+}
+.square {
+  background-color: rgb(152, 195, 203);
+  color: white;
+  width: 90px;
+  height: 90px;
+  box-shadow: 5px 5px 5px rgb(152, 195, 203);
+  border-radius: 30px;
+  margin: 3px;
+  font-size: 50pt;
+  font-weight: 900;
+  text-align: center;
+  padding-top: 8pt;
 }

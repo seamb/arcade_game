@@ -11,15 +11,24 @@
 
   <body>
     <h1>Tic Tac Toe</h1>
-    <h2>Instructions go here.</h2>
+    <h2>
+      Two players will take turns placing a mark in the squares of our grid. The
+      first player to have 3 marks in a horizontal, vertial, or diagonal line
+      wins! Choose your your marker and hit play to begin.
+    </h2>
+    <div id="setup">
+      <div id="whoPlays">
+        <p id="xIs"></p>
+        <p id="oIs"></p>
+      </div>
+      <div id="playersEntry">
+        <input type="text" id="firstPlayer" placeholder="Who will be X?" />
+        <input type="text" id="secondPlayer" placeholder="Who will be O?" />
+        <button id="playBtn" onclick="playerNames()">Play</button>
+      </div>
+    </div>
+
     <div id="playText">Good Luck!</div>
-    <!-- <div id="playerInfo">
-      <input type="text" id="xPlayer" placeholder="Player X Name" />
-      <input type="text" id="oPlayer" placeholder="Player O Name" />
-      <button type="button" id="playButton" onclick="addPlayerNames();">
-        Play Game
-      </button>
-    </div> -->
     <main id="board"></main>
     <button id="newGame">New Game</button>
   </body>

@@ -1,16 +1,7 @@
-// What is the starting state?
-// How do I display the state of the game to the user?
-// What controls/interface to I make available to the user?
-// How does each interaction update the state?
-
-//********************************* STATE *********************************************
-// let state = {}; //starting the state as empty
 
 const resetState = () => {
  
 newBoard = [null,null,null,null,null,null,null,null,null]
-    // console.log('state', state );
-    // state.currentPlayerIdx = 1;
 
 const playText = document.getElementById('playText')
 
@@ -18,36 +9,29 @@ const x_Player = "X";
 const o_Player = "O";
 let currentPlayer = x_Player
 
-
-// *********************************** DOM SELECTORS *********************************
-
 const boardElement = document.getElementById('board');
 console.log('board', boardElement);
 
 const renderBoard = () => {
       boardElement.innerHTML = '';
-    // reset the board
+
     for (let i = 0; i < newBoard.length; i++) {
 
-//create a square element
     const squareElement = document.createElement('div');    
-//give the square a class like "square"
+
     squareElement.className= 'square'; 
-//attach the element to the parent container
+
     boardElement.appendChild(squareElement);    
 
     squareElement.dataset.index = i;
 
-squareElement.addEventListener('click', squareClick);
+    squareElement.addEventListener('click', squareClick);
+
+    }
 
 }
-
-}
-
 const squareClick = (e) => {
     const identifier = e.target.dataset.index; 
-    console.log("ASCSACSAC", identifier, "hahaha")
-    console.log( "hi",currentPlayer );
     if (!newBoard [identifier]) {
         newBoard [identifier] = currentPlayer;
         e.target.innerText = currentPlayer;
@@ -57,12 +41,10 @@ const squareClick = (e) => {
             return;
         }
 
-
         currentPlayer = currentPlayer === x_Player ? o_Player : x_Player;
-
     }
-
 }
+
 const playerWins = () => {
     if(newBoard[0]===currentPlayer){
         if(newBoard[1] ===currentPlayer && newBoard[2] === currentPlayer){
@@ -102,28 +84,28 @@ const playerWins = () => {
     }
 };
 
-//  // ***************************** EVENT LISTENERS ********************************
-
-
-
  renderBoard();
 }
-// };
-//   function addPlayerNames(){
-//  //Selecting the input element and get its value 
-//     let playerX = document.getElementById ("xPlayer").value;
-//     let playerO = document.getElementById ("oPlayer").value;
-//        state.players = [playerX, playerO];
-//        ourPlayers.innerText = ` ${playerX} will start`
-//           console.log('play game clicked')
-//   }
 
-// ******************************** HELPER FUNCTIONS **************************
+function playerNames() {
+
+ let playerOne = document.getElementById('firstPlayer').value;
+ let playerTwo = document.getElementById('secondPlayer').value;
+  document.getElementById('xIs').innerHTML = `${playerOne} is X    `;
+  document.getElementById('oIs').innerHTML = `${playerTwo} is O`;
+
+   let whosFirst = document.getElementById("playersEntry")
+   whosFirst.innerHTML = `${playerOne} will start the game`;
+    setTimeout(function(){ 
+      whosFirst.innerHTML = "";
+  }, 2000);
 
 
-  
-// ******************************* BOOTSTRAPPING *******************************
 resetState();
+}
+
+// ******************************* BOOTSTRAPPING *******************************
+// resetState();
 // renderBoard();
 
 let newGameButton = document.getElementById("newGame");
