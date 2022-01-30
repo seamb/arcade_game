@@ -50,7 +50,6 @@ const playerWins = () => {
         if(newBoard[1] ===currentPlayer && newBoard[2] === currentPlayer){
             playText.innerHTML = `${currentPlayer} wins!`;
             return true;
-
         }
         if(newBoard[3] ===currentPlayer && newBoard[6] === currentPlayer){
             playText.innerHTML = `${currentPlayer} wins!`;
@@ -60,7 +59,6 @@ const playerWins = () => {
             playText.innerHTML = `${currentPlayer} wins!`;
             return true;
         }
-
         } else if (newBoard[8]===currentPlayer){
         if(newBoard[7] ===currentPlayer && newBoard[6] === currentPlayer){
             playText.innerHTML = `${currentPlayer} wins!`;
@@ -70,7 +68,6 @@ const playerWins = () => {
             playText.innerHTML = `${currentPlayer} wins!`;
             return true; 
         }
-
         } else if (newBoard[4]===currentPlayer){
         if(newBoard[3] ===currentPlayer && newBoard[5] === currentPlayer){
             playText.innerHTML = `${currentPlayer} wins!`;
@@ -80,7 +77,10 @@ const playerWins = () => {
             playText.innerHTML = `${currentPlayer} wins!`;
             return true; 
         }
-
+        if(newBoard[2] ===currentPlayer && newBoard[6] === currentPlayer){
+            playText.innerHTML = `${currentPlayer} wins!`;
+            return true; 
+        }
     }
 };
 
