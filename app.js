@@ -5,30 +5,49 @@ newBoard = [null,null,null,null,null,null,null,null,null]
 
 const playText = document.getElementById('playText')
 
-const x_Player = "X";
-const o_Player = "O";
-let currentPlayer = x_Player
+let currentPlayer = ''
+
+let playerCount = [0, 1]
+
+// console.log(playerCount, "start count");
+
+//  function chooseCount (array){
+//     if (true){
+//     let currentPlayer =  Math.floor(Math.random() *2) 
+//     console.log("current count is ", currentPlayer)
+//     return currentPlayer
+//     }
+//  }
+
+//  chooseCount(playerCount)
+//        currentPlayer = currentPlayer === "X"? "O" : "X";
+
+let x_Player = currentPlayer === currentPlayer[0];
+let o_Player = currentPlayer === currentPlayer[1];
+
+//  currentPlayer = currentPlayer === x_Player ? o_Player : x_Player;
+ 
+// function
+// let currentPlayer = "X" 
+
+let whosFirst = document.getElementById("playersEntry")
+   whosFirst.innerHTML = currentPlayer + "will start";
+    setTimeout(function(){ 
+      whosFirst.innerHTML = "";
+  }, 2000);
+
 
 const boardElement = document.getElementById('board');
 console.log('board', boardElement);
 
 const renderBoard = () => {
-      boardElement.innerHTML = '';
-
     for (let i = 0; i < newBoard.length; i++) {
-
-    const squareElement = document.createElement('div');    
-
-    squareElement.className= 'square'; 
-
-    boardElement.appendChild(squareElement);    
-
-    squareElement.dataset.index = i;
-
-    squareElement.addEventListener('click', squareClick);
-
-    }
-
+        const squareElement = document.createElement('div');    
+            squareElement.className= 'square'; 
+            boardElement.appendChild(squareElement);    
+                squareElement.dataset.index = i;
+                    squareElement.addEventListener('click', squareClick);
+    }  
 }
 const squareClick = (e) => {
     const identifier = e.target.dataset.index; 
@@ -40,8 +59,20 @@ const squareClick = (e) => {
             playText.innerText = `${currentPlayer} has won!`;
             return;
         }
+console.log(playerCount, "start count");
 
-        currentPlayer = currentPlayer === x_Player ? o_Player : x_Player;
+ function chooseCount (array){
+    if (true){
+    let currentPlayer =  Math.floor(Math.random() *2) 
+    console.log("current count is ", currentPlayer)
+    return currentPlayer
+    }
+ }
+
+ chooseCount(playerCount)
+       currentPlayer = currentPlayer === "X"? "O" : "X";
+
+        // currentPlayer = currentPlayer === "X"? "O" : "X";
     }
 }
 
@@ -91,26 +122,21 @@ function playerNames() {
 
  let playerOne = document.getElementById('firstPlayer').value;
  let playerTwo = document.getElementById('secondPlayer').value;
-  document.getElementById('xIs').innerHTML = `${playerOne} is X    `;
+ 
+  document.getElementById('xIs').innerHTML = `${playerOne} is X`;
   document.getElementById('oIs').innerHTML = `${playerTwo} is O`;
-
-   let whosFirst = document.getElementById("playersEntry")
-   whosFirst.innerHTML = `${playerOne} will start the game`;
-    setTimeout(function(){ 
-      whosFirst.innerHTML = "";
-  }, 2000);
 
 
 resetState();
 }
 
-// ******************************* BOOTSTRAPPING *******************************
-// resetState();
-// renderBoard();
 
 let newGameButton = document.getElementById("newGame");
-    newGameButton.addEventListener('click' , () => { // takes the assigned button and adds an event when clicked
-     window.location.reload(true);   // event is that the window is reloaded 
-  
+    newGameButton.addEventListener('click' , () => { 
+        console.log("NEW GAME!!!");
+            window.location.reload(true);  
     });
+
+
+
 
